@@ -16,6 +16,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
+        ./k3s.nix
         NixOS-WSL.nixosModules.wsl
         home-manager.nixosModules.home-manager
           {

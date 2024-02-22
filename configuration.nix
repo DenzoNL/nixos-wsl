@@ -25,6 +25,7 @@
   environment.systemPackages = with pkgs; [
     git
     gitkraken
+    htop
     wget
   ];
 
