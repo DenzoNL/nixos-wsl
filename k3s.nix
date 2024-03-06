@@ -16,8 +16,10 @@
     "--write-kubeconfig-mode=644" # Allow kubectl to read /etc/rancher/k3s/k3s.yaml
   ];
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
+    argocd
     k3s
+    k9s
     kubernetes-helm
   ];
 
