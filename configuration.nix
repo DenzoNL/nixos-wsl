@@ -22,6 +22,9 @@
     experimental-features = nix-command flakes
   '';
 
+  # Required for configuring binary caches with cachix
+  nix.settings.trusted-users = [ "root" "denzo" ];
+
   environment.systemPackages = with pkgs; [
     git
     gitkraken

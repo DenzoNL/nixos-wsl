@@ -19,6 +19,7 @@
   # environment.
   home.packages = with pkgs;[
     awscli2
+    cachix
     nil
     pinentry-curses
   ];
