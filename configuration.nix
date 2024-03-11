@@ -11,7 +11,6 @@
   wsl.enable = true;
   wsl.defaultUser = "denzo";
   wsl.startMenuLaunchers = true;
-  wsl.interop.includePath = false;
   
   users.users.denzo.shell = pkgs.zsh;
   programs.zsh.enable = true;
