@@ -9,12 +9,29 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, NixOS-WSL, home-manager }: {
+  outputs = { self, fenix, nixpkgs, NixOS-WSL, home-manager }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        ({ pkgs, ... }: {
+          nixpkgs.overlays = [ fenix.overlays.default ];
+          environment.systemPackages = with pkgs; [
+            (fenix.packages.${system}.complete.withComponents [
+              "cargo"
+              "clippy"
+              "rust-src"
+              "rustc"
+              "rustfmt"
+            ])
+            rust-analyzer-nightly
+          ];
+        })
         ./configuration.nix
         ./docker.nix
         NixOS-WSL.nixosModules.wsl
