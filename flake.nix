@@ -9,13 +9,9 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, rust-overlay, nixpkgs, NixOS-WSL, home-manager }: {
+  outputs = { self, nixpkgs, NixOS-WSL, home-manager }: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -28,10 +24,6 @@
             home-manager.useUserPackages = true;
             home-manager.users.denzo = import ./home.nix;
           }
-          ({ pkgs, ... }: {
-          nixpkgs.overlays = [ rust-overlay.overlays.default ];
-          environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
-        })
       ];
     };
   };
