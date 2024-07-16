@@ -5,7 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   wsl.enable = true;
@@ -25,12 +25,17 @@
   # Required for configuring binary caches with cachix
   nix.settings.trusted-users = [ "root" "denzo" ];
 
+  # Prevent OOMkills by limiting the amount of concurrency while compiling
+  nix.settings.cores = 12;
+
   environment.systemPackages = with pkgs; [
     git
-    gitkraken
-    gcc
     htop
     wget
+  ];
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "CascadiaCode" "CascadiaMono" ]; })
   ];
 
   environment.shellAliases = {

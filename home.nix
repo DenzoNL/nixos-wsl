@@ -24,8 +24,8 @@
   home.packages = with pkgs;[
     awscli2
     cachix
+    gitkraken
     nil
-    pinentry-curses
   ];
 
   # Enable direnv
@@ -38,7 +38,7 @@
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
     syntaxHighlighting = {
