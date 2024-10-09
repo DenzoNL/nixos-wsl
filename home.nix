@@ -26,7 +26,7 @@
     awscli2
     cachix
     gitkraken
-    k3s
+    kubectl
     k9s
     kubernetes-helm
     nil
