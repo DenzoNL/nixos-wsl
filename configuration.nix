@@ -34,6 +34,11 @@
     wget
   ];
 
+  # Workaroound for VSCode Remote Server
+  programs.nix-ld = {
+    enable = true;
+  };
+
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" "CascadiaMono" ]; })
   ];
