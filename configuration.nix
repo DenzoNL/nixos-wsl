@@ -26,7 +26,7 @@
   nix.settings.trusted-users = [ "root" "denzo" ];
 
   # Prevent OOMkills by limiting the amount of concurrency while compiling
-  nix.settings.cores = 12;
+  nix.settings.cores = 10;
 
   environment.systemPackages = with pkgs; [
     git
@@ -40,7 +40,8 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "CascadiaCode" "CascadiaMono" ]; })
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.caskaydia-cove
   ];
 
   environment.shellAliases = {

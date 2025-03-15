@@ -26,10 +26,11 @@
     awscli2
     cachix
     gitkraken
-    kubectl
     k9s
+    kubectl
     kubernetes-helm
-    nil
+    nixd
+    nixfmt
   ];
 
   # Enable direnv
