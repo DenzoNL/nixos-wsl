@@ -25,12 +25,15 @@
     argocd
     awscli2
     cachix
+    gcc
     gitkraken
     k9s
     kubectl
     kubernetes-helm
     nixd
     nixfmt
+    openssl
+    pkg-config
     rustup
   ];
 
