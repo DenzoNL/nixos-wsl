@@ -31,6 +31,7 @@
     kubernetes-helm
     nixd
     nixfmt
+    rustup
   ];
 
   # Enable direnv
