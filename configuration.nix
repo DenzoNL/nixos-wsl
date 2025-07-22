@@ -12,8 +12,8 @@
   wsl.defaultUser = "denzo";
   wsl.startMenuLaunchers = true;
   
-  users.users.denzo.shell = pkgs.zsh;
-  programs.zsh.enable = true;
+  users.users.denzo.shell = pkgs.fish;
+  programs.fish.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   
@@ -34,7 +34,7 @@
     wget
   ];
 
-  # Workaroound for VSCode Remote Server
+  # Workaround for VSCode Remote Server
   programs.nix-ld = {
     enable = true;
   };

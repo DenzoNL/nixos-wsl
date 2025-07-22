@@ -25,6 +25,7 @@
     argocd
     awscli2
     cachix
+    eza
     gcc
     gitkraken
     k9s
@@ -45,30 +46,35 @@
     };
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    dotDir = ".config/zsh";
-    syntaxHighlighting = {
-      enable = true;
-    };
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
     shellAliases = {
+      # Kubernetes aliases
       k = "kubectl";
+      kc = "kubectx";
+      kn = "kubens";
       tf = "terraform";
+      
+      # Modern replacements for ls
+      ls = "exa --icons";
+      ll = "exa -l --icons --git";
+      la = "exa -la --icons --git";
+      lt = "exa --tree --level=2 --icons";
+      lta = "exa --tree --level=2 --icons --all";
     };
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-       }
-       {
-         name = "powerlevel10k-config";
-         src = lib.cleanSource ./p10k-config;
-         file = "p10k.zsh";
-       }
-    ];
+  };
+
+  # Enable starship prompt
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      # Increase command timeout to prevent Java detection issues
+      command_timeout = 1000;
+    };
   };
 
   programs.gpg = {
