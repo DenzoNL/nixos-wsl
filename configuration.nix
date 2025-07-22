@@ -11,7 +11,12 @@
   wsl.enable = true;
   wsl.defaultUser = "denzo";
   wsl.startMenuLaunchers = true;
-  
+
+  wsl.wslConf.network.generateHosts = false;
+  networking.extraHosts = ''
+    100.69.0.2 bifrost
+  '';
+
   users.users.denzo.shell = pkgs.fish;
   programs.fish.enable = true;
 
