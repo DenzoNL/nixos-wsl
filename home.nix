@@ -72,8 +72,8 @@
     enable = true;
     enableFishIntegration = true;
     settings = {
-      # Increase command timeout to prevent Java detection issues
       command_timeout = 1000;
+      aws.disabled = true;
     };
   };
 
