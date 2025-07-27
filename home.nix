@@ -23,6 +23,7 @@
   # environment.
   home.packages = with pkgs;[
     argocd
+    argocd-autopilot
     awscli2
     cachix
     eza
